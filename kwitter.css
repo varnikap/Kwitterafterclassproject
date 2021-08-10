@@ -1,5 +1,13 @@
 
 body{
     background-color: #CCFFFF;
+    text-align: right;
+}
+#twocontainer
+{
+    text-align: center;
+}
+#two{
+    background-color:rgb(2, 33, 83);
 }
 
