@@ -1,7 +1,8 @@
-// Your web app's Firebase configuration
+  // Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDFMQPmzRWbyo1Qk5cM8goHoVQR82qtxVI",
     authDomain: "kwitterdata-63a0c.firebaseapp.com",
+    databaseURL: "https://kwitterdata-63a0c-default-rtdb.firebaseio.com",
     projectId: "kwitterdata-63a0c",
     storageBucket: "kwitterdata-63a0c.appspot.com",
     messagingSenderId: "122903433457",
@@ -15,19 +16,21 @@
   document.getElementById("welcome").innerHTML = "Welcome " + username + "!";
 
 
-  function addroom()
-  {
-    room_name = document.getElementById("room_name").value;
-    firebase.database().ref("/").child(room_name).update({
-      purpose : "adding room name"
-    });
-    localStorage.setItem("room_name", room_name);
-    window.location = "kwitter_room.html"
-  }
+ 
+
+function addroomt()
+{
+  firebase.database().ref("/").child(room_name).update({
+    purpose : "adding room name"
+  });
+  room_name = document.getElementById("room_name").value;
+  localStorage.setItem("room_name", room_name);
+  window.location = "kwitter_room.html"
+}
 
   function getData() 
   {
-    firebase.database().ref("/").on('value',function(snapshot) 
+    firebase.database().ref("/"+ room_name).on('value',function(snapshot) 
   {
     document.getElementById("output").innerHTML ="";
 snapshot.forEach
@@ -48,10 +51,6 @@ function redriectToRoomName(name)
   localStorage.setItem("room_name" , name);
   window.location ="kwitter_room.html";
 } 
-
-
-
-
 
 
 
