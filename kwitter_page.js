@@ -10,31 +10,52 @@
   // Initialize Firebase
   firebase.initializeApp(firebaseConfig);
 
+  username = localStorage.getItem("username");
+
+  document.getElementById("welcome").innerHTML = "Welcome " + username + "!";
+
+
+  function addroom()
+  {
+    room_name = document.getElementById("room_name").value;
+    firebase.database().ref("/").child(room_name).update({
+      purpose : "adding room name"
+    });
+    localStorage.setItem("room_name", room_name);
+    window.location = "kwitter_room.html"
+  }
+
+  function getData() 
+  {
+    firebase.database().ref("/").on('value',function(snapshot) 
+  {
+    document.getElementById("output").innerHTML ="";
+snapshot.forEach
+(
+  function(childSnapshot) 
+  {
+    childKey = childSnapshot.key;
+    Room_names = childKey;
+    console.log("Room Names - " + Room_names);
+    row = "<div class='room_name' id="+Room_names+" onclick ='redriectToRoomName(this.id)'># "+Room_names+"</div><hr>";
+    document.getElementById("output").innerHTML += row;
+});});}
+getData();
+
+function redriectToRoomName(name)
+{
+  console.log(name);
+  localStorage.setItem("room_name" , name);
+  window.location ="kwitter_room.html";
+} 
 
 
 
 
 
 
-  //<div class= "container"  style=" height: 500px; width:800px; background:#99CCFF; ">
-          //<div id="infoarea">
-                    //<h1> Kwitter</h1>
-                    //<h3> The Online Chating Surface</h3>
-                   // <h4> See What The World Is Interacting About</h4>
-                   //<img src="https://i.pinimg.com/originals/03/62/be/0362bebcb3397519f5bc54fd3ae07094.jpg" width="150px" height="150">
-            //</div>
-            //<hr>
-            //<div id="loginarea">
-                //<h4>Sign In Or Up</h4>
-               // <br>
-                //<input type="text" id="user_name" class="form_control" placeholder="User Name" width="800px">
-               // <br>
-               // <br>
-                //<button id="login_button" class="btn btn_primary" onclick="addUser()">Login To Kwitter</button>
-                // <br>
 
-               //  <br>
-           // </div>
-               
 
-           // </div>
+
+
+  

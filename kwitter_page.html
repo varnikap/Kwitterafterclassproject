@@ -1,7 +1,9 @@
 <html>
     <head>
         <title>Lets Chat</title>
-  
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/7.6.2/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/live/3.1/firebase.js"></script>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -24,13 +26,13 @@
             <br>
             <h5 id="welcome"  style="font-size: 25px; color: white; ">Welcome</h5>
            <h6 style="font-size: 20px; font-weight: 100; color: white;"> Create or Log In Into A Room</h6>
-           <input type="text" placeholder="roomname"  id=" room_name" style="width:500px; height: 30px; border-radius: 5px;" >
+           <input type="text" placeholder="room_name"  id=" room_name" style="width:500px; height: 30px; border-radius: 5px;" >
            <br>
            <br>
-           <button id="#addroom" style=" background-color:green; border: radius 10px; color: white;"> #Add Room</button>
+           <button id="#addroom" style=" background-color:green; border: radius 10px; color: white;" onclick="addroom()"> #Add Room</button>
            <br>
            <h3 style="color: white;"> #TRENDING ROOMS</h3>
-           <h4 style=" border-radius: 20px; background-color: lightgrey;  width:800px; height: auto;">   none  </h4>
+           <h4  id="output"style=" border-radius: 20px; background-color: lightgrey;  width:800px; height: auto;">    </h4>
     </div>
         
 
