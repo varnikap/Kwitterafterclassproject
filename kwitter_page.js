@@ -1,4 +1,4 @@
-  // Your web app's Firebase configuration
+// Your web app's Firebase configuration
   var firebaseConfig = {
     apiKey: "AIzaSyDFMQPmzRWbyo1Qk5cM8goHoVQR82qtxVI",
     authDomain: "kwitterdata-63a0c.firebaseapp.com",
@@ -48,6 +48,10 @@ function redriectToRoomName(name)
   localStorage.setItem("room_name" , name);
   window.location ="kwitter_room.html";
 } 
+
+
+
+
 
 
 
