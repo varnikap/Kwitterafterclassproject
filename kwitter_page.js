@@ -12,6 +12,7 @@
   firebase.initializeApp(firebaseConfig);
 
   username = localStorage.getItem("username");
+ room_name = localStorage.getItem("room_name")
 
   document.getElementById("welcome").innerHTML = "Welcome " + username + "!";
 
@@ -20,10 +21,12 @@
 
 function addroomt()
 {
+  room_name = document.getElementById("room_name").value;
+
   firebase.database().ref("/").child(room_name).update({
     purpose : "adding room name"
   });
-  room_name = document.getElementById("room_name").value;
+  
   localStorage.setItem("room_name", room_name);
   window.location = "kwitter_room.html"
 }
@@ -51,6 +54,14 @@ function redriectToRoomName(name)
   localStorage.setItem("room_name" , name);
   window.location ="kwitter_room.html";
 } 
+
+function logout()
+{
+  localStorage.removeItem("user_name");
+  localStorage.removeItem("room_name");
+  localStorage.removeItem("username");
+  window.location ="index.html";
+}
 
 
 
